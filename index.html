@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="search"/>   
+        <div class="row profile" v-for="customer in filteredCustomers">
+            <h4 class="name">{{customer}}</h4>
+        </div>
+    </div>
+    
+    <script>
+        var app=new Vue({
+            el: '#app',
+        data: function(){
+            return{
+            search: '',
+            customers: [
+                'Destiny Grace',
+                'Mambo Joy',
+                'Ntokungia Zidane',
+                'Karlson Sediod',
+                'Awa Donacien',
+                'Fadimatou Traore',
+                'Bansi Rene',
+                'Karl Siaka',
+                'Teke Rene',
+
+            ]}
+        },
+computed:{
+    filteredCustomers:function()
+    {
+        var self=this;
+        return this.customers.filter(function(cust){return cust.toLowerCase().indexOf(self.search.toLowerCase())>=0;});
+    }
+}
+        })
+</script>
+</body>
+
+</html>
